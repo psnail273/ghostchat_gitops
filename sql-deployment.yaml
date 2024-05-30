@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-deployment
+  labels:
+    app: sql
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sql
+  template:
+    metadata:
+      labels:
+        app: sql
+    spec:
+      containers:
+        - name: sql
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
